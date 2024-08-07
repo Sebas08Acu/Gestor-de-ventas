@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Ventas y Apartados</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Pantalla de bienvenida -->
+    <div id="welcome-screen">
+        <h1>Bienvenido a la Gestión de Ventas y Apartados</h1>
+        <button id="start-button">Empezar</button>
+    </div>
+
+    <!-- Contenido principal -->
+    <div id="content" style="display: none;">
+        <!-- Botón para alternar entre ventas y apartados -->
+        <button id="toggle-button">Agregar Ventas</button>
+
+        <!-- Sección de ventas -->
+        <div id="sales-section" class="mode-section">
+            <h2>Agregar Venta</h2>
+            <form id="user-form">
+                <label for="name">Nombre del Cliente:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="product">Producto:</label>
+                <input type="text" id="product" name="product" required>
+
+                <label for="price">Precio:</label>
+                <input type="number" id="price" name="price" required>
+
+                <label for="date">Fecha:</label>
+                <input type="date" id="date" name="date" required>
+
+                <label for="image">Imagen (opcional):</label>
+                <input type="file" id="image" name="image">
+
+                <label for="comment">Comentario:</label>
+                <input type="text" id="comment" name="comment">
+
+                <button type="submit">Agregar Venta</button>
+            </form>
+
+            <table id="sales-table">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Producto</th>
+                        <th>Precio</th>
+                        <th>Fecha</th>
+                        <th>Imagen</th>
+                        <th>Comentario</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="sales-table-body"></tbody>
+            </table>
+        </div>
+
+        <!-- Sección de apartados -->
+        <div id="payments-section" class="mode-section" style="display: none;">
+            <h2>Agregar Apartado</h2>
+            <form id="payment-form">
+                <label for="payment-name">Nombre del Cliente:</label>
+                <input type="text" id="payment-name" name="payment-name" required>
+
+                <label for="payment-product">Producto:</label>
+                <input type="text" id="payment-product" name="payment-product" required>
+
+                <label for="payment-amount">Monto:</label>
+                <input type="number" id="payment-amount" name="payment-amount" required>
+
+                <label for="payment-date">Fecha:</label>
+                <input type="date" id="payment-date" name="payment-date" required>
+
+                <label for="payment-image">Imagen (opcional):</label>
+                <input type="file" id="payment-image" name="payment-image">
+
+                <label for="payment-comment">Comentario:</label>
+                <input type="text" id="payment-comment" name="payment-comment">
+
+                <button type="submit">Agregar Apartado</button>
+            </form>
+
+            <table id="payments-table">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Producto</th>
+                        <th>Monto</th>
+                        <th>Fecha</th>
+                        <th>Imagen</th>
+                        <th>Comentario</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="payments-table-body"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Modal para editar -->
+    <div id="edit-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Editar Información</h2>
+            <form id="edit-form">
+                <input type="hidden" id="edit-row-index">
+                <label for="edit-name">Nombre:</label>
+                <input type="text" id="edit-name" name="edit-name" required>
+
+                <label for="edit-product">Producto:</label>
+                <input type="text" id="edit-product" name="edit-product" required>
+
+                <label for="edit-price">Precio:</label>
+                <input type="number" id="edit-price" name="edit-price" required>
+
+                <label for="edit-date">Fecha:</label>
+                <input type="date" id="edit-date" name="edit-date" required>
+
+                <label for="edit-comment">Comentario:</label>
+                <input type="text" id="edit-comment" name="edit-comment">
+
+                <button type="submit">Guardar Cambios</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal de confirmación de eliminación -->
+    <div id="confirm-delete-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeDeleteModal()">&times;</span>
+            <h2>Confirmar Eliminación</h2>
+            <p>¿Está seguro de que desea eliminar este elemento?</p>
+            <button id="confirm-delete-btn">Eliminar</button>
+            <button id="cancel-delete-btn">Cancelar</button>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
